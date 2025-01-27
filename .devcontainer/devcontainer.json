@@ -1,0 +1,21 @@
+{
+  "name": "WebScrapper",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "PKief.material-icon-theme",
+        "YoavBls.pretty-ts-errors",
+        "xabikos.JavaScriptSnippets"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+  "remoteUser": "root",
+  "runArgs": ["--name", "webscrapper-dev-container"]
+}

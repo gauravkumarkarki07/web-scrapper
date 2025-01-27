@@ -11,4 +11,16 @@ export const links = {
       productLink: "a",
     },
   },
+  test: {
+    baseUrl: "https://www.iot-store.com.au/",
+    link: "https://www.iot-store.com.au/collections/bivocom",
+    pagination: false,
+    selector: {
+      productMainDivClass: ".product-grid-item",
+      productName: "p",
+      productPrice: "small",
+      productDescription: "",
+      productLink: "a",
+    },
+  },
 } as const;

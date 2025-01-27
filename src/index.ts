@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import { Endpoints } from './endpoints';
 import { ApiRequest } from './apiRequest';
 import { ProductDetails } from "./types";
+import { writeFile, mkdirSync, existsSync } from 'node:fs';
 
 const api = new ApiRequest();
 const endpoints = new Endpoints();
@@ -21,6 +22,21 @@ async function parseHtml() {
                 const fullLink =  `${endpoints.iotDevices}/${link}`;
                 products.push({ name, price, description, link: fullLink });
         });
+
+        if (products.length > 0) {
+            const dirPath = './files';
+            if (!existsSync(dirPath)) {
+                mkdirSync(dirPath, { recursive: true });
+            }
+
+            writeFile(`${dirPath}/products.json`, JSON.stringify(products, null, 2), (err) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('File written');
+                }
+            });
+        }
 
         console.log("Extracted Text:", products);
     } catch (error) {
